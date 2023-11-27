@@ -15,45 +15,160 @@ public class genereObstacles : MonoBehaviour
     public float vitesseMeteorites = 2f;
     public float vitesseMines = 1f;
 
+
     //private GameObject[] objetsInstancies;
+    private GameObject meteoriteTempo;
+    public GameObject[] ensembleMines;
+    private Rigidbody[] obstacles;
 
     void Start()
     {
-        InvokeRepeating("instancierMeteorite1", 0f, 2f);
-        //for (int i = 0, j = 0; i < nbObstacles; j++, i++)
-        //{
-        //    if (j == 0)
-        //    {
-        //        instancierObjet(meteorite1, i);
-        //    }
-        //    if (j == 1)
-        //    {
-        //        instancierObjet(meteorite2, i);
-        //    }
-        //    if (j == 2)
-        //    {
-        //        instancierObjet(meteorite3, i);
-        //    }
-        //    if (j == 3)
-        //    {
-        //        instancierObjet(mine, i);
-        //        j = 0;
-        //    }
+        //appel des fonctions instanciant les obstacles
+        InvokeRepeating("instancierMeteorite1", 0f, tempsEntreVagues);
+        InvokeRepeating("instancierMeteorite2", 0f, tempsEntreVagues);
+        InvokeRepeating("instancierMeteorite3", 0f, tempsEntreVagues);
+        InvokeRepeating("instancierMines", 0f, tempsEntreVagues);
 
-        //}
     }
 
-    private void instancierMeteorite1(GameObject objet)
+    private void instancierMeteorite1()
     {
-        //random la coordonnée (x,z)
-        float x = UnityEngine.Random.Range(0f, 10f);
-        float y = UnityEngine.Random.Range(-3f, 3f);
+        for (int i = 0; i < (nbObstacles/4); i++)
+        {
+            //random la coordonnée (x,z)
+            float x = UnityEngine.Random.Range(0f, 10f);
+            float y = UnityEngine.Random.Range(-3f, 3f);
 
-        //variable pour la position
-        Vector3 pos = new Vector3(x, y, 0f);
+            //variable pour la position
+            Vector3 pos = new Vector3(x, y, 0f);
 
-        //instancier
-        Instantiate(objet, pos, Quaternion.identity);
+            //instancier
+            meteoriteTempo = Instantiate(meteorite1, pos, Quaternion.identity);
+
+            ///* donner une vitesse èa l'objet */
+
+            //Rigidbody rb = meteoriteTempo.GetComponent<Rigidbody>();
+
+            //// Vérifier si l'objet a un composant Rigidbody
+            //if (rb != null)
+            //{
+            //    // Définir la vélocité dans la direction souhaitée
+            //    rb.velocity = getDirection() * vitesseMeteorites;
+            //}
+            //else
+            //{
+            //    Debug.LogWarning("L'objet " + meteoriteTempo.tag + " n'a pas de composant Rigidbody.");
+            //}
+        }
+    }
+
+    private void instancierMeteorite2()
+    {
+        for (int i = 0; i < (nbObstacles / 4); i++)
+        {
+            //random la coordonnée (x,z)
+            float x = UnityEngine.Random.Range(0f, 10f);
+            float y = UnityEngine.Random.Range(-3f, 3f);
+
+            //variable pour la position
+            Vector3 pos = new Vector3(x, y, 0f);
+
+            //instancier
+            meteoriteTempo = Instantiate(meteorite2, pos, Quaternion.identity);
+
+            ///* donner une vitesse èa l'objet */
+
+            //Rigidbody rb = meteoriteTempo.GetComponent<Rigidbody>();
+
+            //// Vérifier si l'objet a un composant Rigidbody
+            //if (rb != null)
+            //{
+            //    // Définir la vélocité dans la direction souhaitée
+            //    rb.velocity = getDirection() * vitesseMeteorites;
+            //}
+            //else
+            //{
+            //    Debug.LogWarning("L'objet " + meteoriteTempo.tag + " n'a pas de composant Rigidbody.");
+            //}
+        }
+    }
+
+    private void instancierMeteorite3()
+    {
+
+        for (int i = 0; i < (nbObstacles / 4); i++)
+        {
+            
+
+            //random la coordonnée (x,z)
+            float x = UnityEngine.Random.Range(0f, 10f);
+            float y = UnityEngine.Random.Range(-3f, 3f);
+
+            //variable pour la position
+            Vector3 pos = new Vector3(x, y, 0f);
+
+            //instancier
+            Instantiate(meteorite3, pos, Quaternion.identity);
+
+            ///* donner une vitesse èa l'objet */
+
+            //Rigidbody rb = meteorite3.GetComponent<Rigidbody>();
+
+            //// Vérifier si l'objet a un composant Rigidbody
+            //if (rb != null)
+            //{
+            //    // Définir la vélocité dans la direction souhaitée
+            //    rb.velocity = getDirection() * vitesseMeteorites;
+            //}
+            //else
+            //{
+            //    Debug.LogWarning("L'objet " + meteorite3.tag + " n'a pas de composant Rigidbody.");
+            //}
+        }
+    }
+
+    private void instancierMines()
+    {
+
+        for (int i = 0; i < (nbObstacles / 4); i++)
+        {
+            //random la coordonnée (x,z)
+            float x = UnityEngine.Random.Range(0f, 10f);
+            float y = UnityEngine.Random.Range(-3f, 3f);
+
+            //variable pour la position
+            Vector3 pos = new Vector3(x, y, 0f);
+
+            //instancier
+            Instantiate(mine, pos, Quaternion.identity);
+           
+
+            ///* donner une vitesse a l'objet */
+
+            //Rigidbody rb = mine.GetComponent<Rigidbody>();
+
+            //// Vérifier si l'objet a un composant Rigidbody
+            //if (rb != null)
+            //{
+            //    // Définir la vélocité dans la direction souhaitée
+            //    rb.velocity = getDirection() * vitesseMines;
+            //}
+            //else
+            //{
+            //    Debug.LogWarning("L'objet " + mine.tag + " n'a pas de composant Rigidbody.");
+            //}
+        }
+    }
+
+    private Vector3 getDirection()
+    {
+        /*instancier une direction*/
+
+        //point cible
+        float yCible = UnityEngine.Random.Range(-2.3f, 2.3f);
+        Vector3 posCible = new Vector3(-2.3f, yCible, 0f);
+
+       return posCible;
     }
 
     private void instancierObjet(GameObject objet, int i)
