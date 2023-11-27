@@ -45,20 +45,7 @@ public class genereObstacles : MonoBehaviour
             //instancier
             meteoriteTempo = Instantiate(meteorite1, pos, Quaternion.identity);
 
-            ///* donner une vitesse èa l'objet */
-
-            //Rigidbody rb = meteoriteTempo.GetComponent<Rigidbody>();
-
-            //// Vérifier si l'objet a un composant Rigidbody
-            //if (rb != null)
-            //{
-            //    // Définir la vélocité dans la direction souhaitée
-            //    rb.velocity = getDirection() * vitesseMeteorites;
-            //}
-            //else
-            //{
-            //    Debug.LogWarning("L'objet " + meteoriteTempo.tag + " n'a pas de composant Rigidbody.");
-            //}
+     
         }
     }
 
@@ -76,20 +63,7 @@ public class genereObstacles : MonoBehaviour
             //instancier
             meteoriteTempo = Instantiate(meteorite2, pos, Quaternion.identity);
 
-            ///* donner une vitesse èa l'objet */
-
-            //Rigidbody rb = meteoriteTempo.GetComponent<Rigidbody>();
-
-            //// Vérifier si l'objet a un composant Rigidbody
-            //if (rb != null)
-            //{
-            //    // Définir la vélocité dans la direction souhaitée
-            //    rb.velocity = getDirection() * vitesseMeteorites;
-            //}
-            //else
-            //{
-            //    Debug.LogWarning("L'objet " + meteoriteTempo.tag + " n'a pas de composant Rigidbody.");
-            //}
+         
         }
     }
 
@@ -110,20 +84,6 @@ public class genereObstacles : MonoBehaviour
             //instancier
             Instantiate(meteorite3, pos, Quaternion.identity);
 
-            ///* donner une vitesse èa l'objet */
-
-            //Rigidbody rb = meteorite3.GetComponent<Rigidbody>();
-
-            //// Vérifier si l'objet a un composant Rigidbody
-            //if (rb != null)
-            //{
-            //    // Définir la vélocité dans la direction souhaitée
-            //    rb.velocity = getDirection() * vitesseMeteorites;
-            //}
-            //else
-            //{
-            //    Debug.LogWarning("L'objet " + meteorite3.tag + " n'a pas de composant Rigidbody.");
-            //}
         }
     }
 
@@ -142,21 +102,7 @@ public class genereObstacles : MonoBehaviour
             //instancier
             Instantiate(mine, pos, Quaternion.identity);
            
-
-            ///* donner une vitesse a l'objet */
-
-            //Rigidbody rb = mine.GetComponent<Rigidbody>();
-
-            //// Vérifier si l'objet a un composant Rigidbody
-            //if (rb != null)
-            //{
-            //    // Définir la vélocité dans la direction souhaitée
-            //    rb.velocity = getDirection() * vitesseMines;
-            //}
-            //else
-            //{
-            //    Debug.LogWarning("L'objet " + mine.tag + " n'a pas de composant Rigidbody.");
-            //}
+           
         }
     }
 

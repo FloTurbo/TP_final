@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 1482586104805238950}
   - component: {fileID: 7975813590138141258}
   - component: {fileID: 6328982160585789562}
+  - component: {fileID: -4133851956750512434}
   m_Layer: 0
   m_Name: meteorite3
   m_TagString: meteorite3
@@ -191,7 +192,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -249,12 +250,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4850889063060024257}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d61550e592462d47bc47f58c202dcdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vitesseMeteorites: 0.4
+--- !u!114 &-4133851956750512434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4850889063060024257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac003f4e83323ff4cb3c0e9c1382ef0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitesseMines: 0.1
 --- !u!1 &6070420145790182186
 GameObject:
   m_ObjectHideFlags: 0
