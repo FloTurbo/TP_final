@@ -5,12 +5,21 @@ using UnityEngine;
 public class jouerdeplacement : MonoBehaviour
 {
     //variables
-    public float vitesseJoueur = 1f;
+    public float vitesseJoueur = 2f;
+    public float maxPosX;
+    public float minPosX;
+    public float maxPosY;
+    public float minPosY;
     private Camera mainCamera;
+
+    Transform deplacement;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        deplacement = GetComponent<Transform>();
+
         //instanciation de la camera principale
         mainCamera = Camera.main;
         if (mainCamera == null)
@@ -23,43 +32,18 @@ public class jouerdeplacement : MonoBehaviour
     void Update()
     {
         //entrée directionnles du clavier
-        float saisieHorizontale = Input.GetAxis("Horizontal");
-        float saisieVerticale = Input.GetAxis("Vertical");
+        float posX = Input.GetAxis("Horizontal");
+        float posY = Input.GetAxis("Vertical");
 
         //direction résultante
-        Vector3 direction = new Vector3( saisieHorizontale, saisieVerticale, 0f);
+        Vector3 nouvellePos = new Vector3 ( posX, posY, 0f);
 
-        //déplacer le joueur en fonction de la direction
-      
-        transform.Translate(direction*vitesseJoueur*Time.deltaTime,Space.World);
-        if(transform.position.y > (Screen.height/2))
-        {
-            transform.position = new Vector3(transform.position.x, (Screen.height / 2), 0f);
-        }
 
-        //empêcher le joueur de sortir de l'écran
-        limitePosition();
+        deplacement.Translate(nouvellePos * vitesseJoueur * Time.deltaTime);
+
+        deplacement.position = new Vector3(Mathf.Clamp(deplacement.position.x, minPosX, maxPosX), Mathf.Clamp(deplacement.position.y, minPosY, maxPosY), deplacement.position.z);
+
+        
     }
 
-    void limitePosition()
-    {
-        Vector3 coinBasGauche = mainCamera.WorldToScreenPoint(new Vector3(0, 0, 0));
-        Vector3 coinHautGauche = mainCamera.WorldToScreenPoint(new Vector3(0, Screen.height, 0));
-        Vector3 coinBasDroite = mainCamera.WorldToScreenPoint(new Vector3(Screen.width, 0, 0));
-        Vector3 coinHautDroit = mainCamera.WorldToScreenPoint(new Vector3(Screen.width, Screen.height, 0));
-
-        ///* méthode trouvée sur internet pour déterminer ou se trouve l'écran */
-
-        ////dimensions de l'écran en pixels
-        //float demiLargeur = Camera.main.orthographicSize * Screen.width / Screen.height;
-        //float demiHauteur = Camera.main.orthographicSize;
-
-        //// Limite la position du vaisseau -> rester à l'intérieur de l'écran
-        //Vector3 positionLimite = transform.position;
-        //positionLimite.x = Mathf.Clamp(positionLimite.x, -demiLargeur, demiLargeur);
-        //positionLimite.z = Mathf.Clamp(positionLimite.z, -demiHauteur, demiHauteur);
-
-        //// Appliquez la position limitée au vaisseau
-        //transform.position = positionLimite;
-    }
 }
