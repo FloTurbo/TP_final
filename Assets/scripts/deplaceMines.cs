@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class deplaceMines : MonoBehaviour
 {
+    //variables mines
     public float vitesseMines = 0.10f;
     private Rigidbody rb;
-   
+    public float minPosX;
+
+    private Transform pos;
+
+    //variables explosion
+    public GameObject joueur;
+    public GameObject particule;
 
     // Start is called before the first frame update
     void Start()
     {
+        //instacier le joueur;
+        joueur = GameObject.FindGameObjectWithTag("Player");
+
+        //instancier la position
+        pos = GetComponent<Transform>();
+
         //instancitation de rb
         rb = GetComponent<Rigidbody>();
         if (rb == null)
@@ -23,6 +36,20 @@ public class deplaceMines : MonoBehaviour
 
         //appliquation de la vitesses
         rb.velocity = vitesseInitiale * vitesseMines;
+
+      
+    }
+
+    //si il y a collision avec l'objet qui porte le scripte
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")  // si l'objet en collision est tagger comme étant le joueur
+        {
+            Instantiate(particule, pos.position, Quaternion.identity); /* génère l'explosion */
+            GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
+            Destroy(gameObject); /* détruit l'objet qui crée la collision */
+            Destroy(joueur);
+        }
     }
 
     private Vector3 getDirection()
@@ -31,7 +58,7 @@ public class deplaceMines : MonoBehaviour
 
         //point cible
         float yCible = UnityEngine.Random.Range(-2.3f, 2.3f);
-        Vector3 posCible = new Vector3(-2.3f, yCible, 0f);
+        Vector3 posCible = new Vector3(-5f, yCible, 0f);
 
         return posCible;
     }
@@ -39,6 +66,10 @@ public class deplaceMines : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (pos.position.x < minPosX - 2)
+        {
+            //détuire l'objet
+            Destroy(gameObject);
+        }
     }
 }

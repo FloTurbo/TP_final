@@ -8,10 +8,16 @@ public class deplaceEnnemis : MonoBehaviour
     private Rigidbody rb;
     public float maxPosY;
     public float minPosY;
+    public float minPosX = -5f;
+
+    private Transform pos;
 
     // Start is called before the first frame update
     void Start()
     {
+        //instancier la position
+        pos = GetComponent<Transform>();
+
         //instancitation de rb
         rb = GetComponent<Rigidbody>();
         if (rb == null)
@@ -29,7 +35,11 @@ public class deplaceEnnemis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (pos.position.x < minPosX - 2)
+        {
+            //détuire l'objet
+            Destroy(gameObject);
+        }
     }
 
     private Vector3 getDirection()

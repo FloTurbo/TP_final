@@ -6,14 +6,13 @@ TagManager:
   tags:
   - Enemy
   - mine
-  - meteorite1
-  - meteorite2
-  - meteorite3
+  - laser
+  - meteorite
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PostProssessing
   - Water
   - UI
   - 

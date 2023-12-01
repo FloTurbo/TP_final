@@ -12,6 +12,7 @@ public class genereEnnemis : MonoBehaviour
     public float maxPosY;
     public float minPosY;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,20 +26,28 @@ public class genereEnnemis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+       
     }
 
     private void instacierEnnemi()
     {
+        //random une position y
+        float y = UnityEngine.Random.Range(-2.7f, 2.7f);
 
         //boucle qui instancie les ennemis en fonction du nombre par vagues
         for (int i = 0; i < nbEnnemisVague; i++)
         {
-            //random une position y
-            float y = UnityEngine.Random.Range(-3f, 3f);
-
+            //si la variable y est inférieur à 2
+            if( y < 2)
+            {
+                y++; /*incrémente */
+            }
+            else if( y > -2)
+            {
+                y--; /* décrémente */
+            }
             //vairable pour la position de l'ennemi
-            Vector3 pos = new Vector3(6, (Mathf.Clamp(y, minPosY, maxPosY)), 0);
+            Vector3 pos = new Vector3(6, y, 0);
 
             //incatanier
             Instantiate(ennemi, pos, Quaternion.identity);
