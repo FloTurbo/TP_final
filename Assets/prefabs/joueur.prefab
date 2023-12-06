@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7813476348856866940}
   - component: {fileID: 7810221267753471124}
   - component: {fileID: 5833773665864311721}
+  - component: {fileID: 3471208812069604317}
   m_Layer: 0
   m_Name: joueur
   m_TagString: Player
@@ -87,6 +88,7 @@ MonoBehaviour:
   projectil: {fileID: 4903079378419176787, guid: ec15614ed3ff44146b17f6ba2a499726, type: 3}
   vitesseProjectil: 600
   frequenceTir: 0.35
+  particule: {fileID: 100010, guid: 9fc38318e2b1ce44d9423ea374bc47c2, type: 3}
 --- !u!114 &7810221267753471124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +130,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3471208812069604317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696757277704185435}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.46196938, y: 0.48097235, z: 0.18302107}
+  m_Center: {x: -0.0019922256, y: -0.00073224306, z: -1.0039196}
 --- !u!1001 &3814209212218540353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -349,6 +372,7 @@ MonoBehaviour:
   projectil: {fileID: 0}
   vitesseProjectil: 0
   frequenceTir: 0.35
+  particule: {fileID: 0}
 --- !u!54 &7211185140918673387
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.VirtualTexturing;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.ParticleSystem;
 
 public class jouerdeplacement : MonoBehaviour
 {
@@ -22,7 +24,10 @@ public class jouerdeplacement : MonoBehaviour
     public float frequenceTir = 0.35f;
     private float frequenceActuelle;
     private bool peuTirer;
-    //public AudioSource soundFire;
+
+    //varaibles pour la destruction
+    public GameObject particule;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +63,18 @@ public class jouerdeplacement : MonoBehaviour
 
         //appel de la fonction tire
         tire();
+    }
+
+    //si il y a collision avec l'objet qui porte le scripte
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "laserEnnemi")  // si l'objet en collision est tagger comme étant le joueur
+        {
+            Instantiate(particule, GetComponent<Transform>().position, Quaternion.identity); /* génère l'explosion */
+            //GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
+            Destroy(gameObject); /* détruit le joueur */
+            Destroy(other);
+        }
     }
 
     //fonction pour tirer

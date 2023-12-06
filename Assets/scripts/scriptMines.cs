@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
-public class deplaceMeteorites : MonoBehaviour
+public class deplaceMines : MonoBehaviour
 {
-    public float vitesseMeteorites = 0.40f;
+    //variables mines
+    public float vitesseMines = 0.10f;
     private Rigidbody rb;
     public float minPosX;
 
@@ -21,9 +21,8 @@ public class deplaceMeteorites : MonoBehaviour
         //instacier le joueur;
         joueur = GameObject.FindGameObjectWithTag("Player");
 
-        //instancier position
+        //instancier la position
         pos = GetComponent<Transform>();
-
 
         //instancitation de rb
         rb = GetComponent<Rigidbody>();
@@ -33,10 +32,12 @@ public class deplaceMeteorites : MonoBehaviour
         }
 
         //vitesse initiale
-        Vector3 vitesseInitiale = getDirection();
+        Vector3 vitesseInitiale = getDirection(); 
 
-        //appliquation de la vitesse
-        rb.velocity = vitesseInitiale * vitesseMeteorites;
+        //appliquation de la vitesses
+        rb.velocity = vitesseInitiale * vitesseMines;
+
+      
     }
 
     //si il y a collision avec l'objet qui porte le scripte
@@ -45,16 +46,9 @@ public class deplaceMeteorites : MonoBehaviour
         if (other.gameObject.tag == "Player")  // si l'objet en collision est tagger comme étant le joueur
         {
             Instantiate(particule, pos.position, Quaternion.identity); /* génère l'explosion */
-            GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
+            //GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
             Destroy(gameObject); /* détruit l'objet qui crée la collision */
             Destroy(joueur);
-        }
-
-        if(other.gameObject.tag == "laser")
-        {
-            Instantiate(particule, pos.position, Quaternion.identity); /* génère l'explosion */
-            GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
-            Destroy(gameObject); /* détruit l'objet qui crée la collision */
         }
     }
 
@@ -72,7 +66,7 @@ public class deplaceMeteorites : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pos.position.x < minPosX -2)
+        if (pos.position.x < minPosX - 2)
         {
             //détuire l'objet
             Destroy(gameObject);
