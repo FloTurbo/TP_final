@@ -47,18 +47,24 @@ public class deplaceMeteorites : MonoBehaviour
         if (other.gameObject.tag == "Player")  // si l'objet en collision est tagger comme étant le joueur
         {
             Instantiate(particule, pos.position, Quaternion.identity); /* génère l'explosion */
-            GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
-            Destroy(gameObject, 0.2f); /* détruit l'objet qui crée la collision */
+            //GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
+            Destroy(gameObject); /* détruit l'objet qui crée la collision */
             Destroy(joueur);
+
+            affichageEtScore.nbMeteoriteDetruites++; //incérmentation du nombre de météorietes détruites
+            affichageEtScore.joueurMort = true; /* le joueur est mort */
+
         }
 
-        if(other.gameObject.tag == "laser")
+        if (other.gameObject.tag == "laser" /*|| other.gameObject.tag == "laserEnnemi"*/)
         {
             Instantiate(particule, pos.position, Quaternion.identity); /* génère l'explosion */
             //GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
             GetComponent<Rigidbody>().isKinematic = true; // désactie le rigidbody de l'objet
             Destroy(gameObject); /* détruit l'objet qui crée la collision */
             Destroy(other.gameObject);
+
+            affichageEtScore.nbMeteoriteDetruites++; //incérmentation du nombre de météorietes détruites
         }
     }
 

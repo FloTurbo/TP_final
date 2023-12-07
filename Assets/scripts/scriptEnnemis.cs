@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class deplaceEnnemis : MonoBehaviour
 {
@@ -17,9 +18,12 @@ public class deplaceEnnemis : MonoBehaviour
     public GameObject viseur2;
     public GameObject projectil;
     public float vitesseProjectil;
-    public float frequenceTir = 1.1f;
+    public float frequenceTir = 4f;
     private float frequenceActuelle;
     private bool peuTirer;
+
+    //varaibles pour la destruction
+    public GameObject particule;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +62,32 @@ public class deplaceEnnemis : MonoBehaviour
 
         //appel de la méthode qui les fait tirer
         tire();
+    }
+
+    //si il y a collision avec l'objet qui porte le scripte
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "laser")  // si l'objet en collision est tagger comme étant le joueur
+        {
+            Instantiate(particule, GetComponent<Transform>().position, Quaternion.identity); /* génère l'explosion */
+            //GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
+            Destroy(gameObject); /* détruit le vaisseau */
+            Destroy(other.gameObject); /* détuite l'objet avec lequel il est entré en collision */
+
+            affichageEtScore.nbVaisseauxDetruits++; //incérmentation du nombre de vaisseaux détruites
+
+        }
+
+        if (other.gameObject.tag == "Player")  // si l'objet en collision est tagger comme étant le joueur
+        {
+            Instantiate(particule, GetComponent<Transform>().position, Quaternion.identity); /* génère l'explosion */
+            //GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
+            Destroy(gameObject); /* détruit le vaisseau */
+            Destroy(other.gameObject);  /* détuite l'objet avec lequel il est entré en collision */
+
+            affichageEtScore.nbVaisseauxDetruits++; //incérmentation du nombre de vaisseaux détruites
+            affichageEtScore.joueurMort = true; /* le joueur est mort */
+        }
     }
 
     private Vector3 getDirection()

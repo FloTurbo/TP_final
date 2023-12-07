@@ -74,6 +74,8 @@ public class jouerdeplacement : MonoBehaviour
             //GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
             Destroy(gameObject); /* détruit le joueur */
             Destroy(other);
+
+            affichageEtScore.joueurMort = true; /* le joueur est mort */
         }
     }
 

@@ -49,6 +49,9 @@ public class deplaceMines : MonoBehaviour
             //GetComponent<AudioSource>().Play(); /* fait jouer un bruit d'explosion */
             Destroy(gameObject); /* détruit l'objet qui crée la collision */
             Destroy(joueur);
+            
+            affichageEtScore.joueurMort = true; /* le joueur est mort */
+
         }
     }
 
