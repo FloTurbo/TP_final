@@ -6,16 +6,21 @@ public class genereEnnemis : MonoBehaviour
 {
     //variables
     public GameObject ennemi;
-    public float nbEnnemisVague;
-    public float tempsEntreVagues = 6f;
-    public float nbEnnemis;
-    public float maxPosY;
-    public float minPosY;
-
+    public static int nbEnnmisVaguesRef;
+    private int nbEnnemisVague = 2;
+    public float tempsEntreVagues = 2f;
+    public float maxPosY = 2.2f;
+    public float minPosY = -2.2f;
 
     // Start is called before the first frame update
     void Start()
     {
+        //vérifie si le nombre d'ennemis par vague a été modifier
+        if (nbEnnmisVaguesRef != 0)
+        {
+            nbEnnemisVague = nbEnnmisVaguesRef;
+        }
+
         //génère les ennemis
         InvokeRepeating("instacierEnnemi", 0f, tempsEntreVagues);
 
@@ -26,7 +31,11 @@ public class genereEnnemis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        //modifie si il y a un changement
+       if(nbEnnmisVaguesRef != nbEnnemisVague) 
+       {
+            nbEnnemisVague = nbEnnmisVaguesRef;
+       }
     }
 
     private void instacierEnnemi()

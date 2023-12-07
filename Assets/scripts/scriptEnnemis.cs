@@ -58,6 +58,9 @@ public class deplaceEnnemis : MonoBehaviour
         {
             //détuire l'objet
             Destroy(gameObject);
+
+            //incérmentation du nombre de vaisseaux ennemis détruits
+            affichageEtScore.nbTotalVaisseauxEnnemisDetruits++;
         }
 
         //appel de la méthode qui les fait tirer
@@ -75,6 +78,8 @@ public class deplaceEnnemis : MonoBehaviour
             Destroy(other.gameObject); /* détuite l'objet avec lequel il est entré en collision */
 
             affichageEtScore.nbVaisseauxDetruits++; //incérmentation du nombre de vaisseaux détruites
+            affichageEtScore.nbTotalVaisseauxEnnemisDetruits++;
+
 
         }
 
@@ -86,6 +91,8 @@ public class deplaceEnnemis : MonoBehaviour
             Destroy(other.gameObject);  /* détuite l'objet avec lequel il est entré en collision */
 
             affichageEtScore.nbVaisseauxDetruits++; //incérmentation du nombre de vaisseaux détruites
+            affichageEtScore.nbTotalVaisseauxEnnemisDetruits++;
+
             affichageEtScore.joueurMort = true; /* le joueur est mort */
         }
     }

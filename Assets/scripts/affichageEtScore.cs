@@ -21,7 +21,7 @@ public class affichageEtScore : MonoBehaviour
     public Button menu;
     private float tempsActuel = 0f;
     public float tempsDepart = 90f;
-    private bool messageFinDejaAff = false;
+    public static bool messageFinDejaAff = false;
 
     //variables pour score
     public static int nbMeteoriteDetruites = 0;
@@ -29,17 +29,51 @@ public class affichageEtScore : MonoBehaviour
     int nbPoints = 0;
     int dureePartie;
     public static bool joueurMort = false;
+    private int numManche;
+    private int numNiveau = 1;
+    private int numNiveauRef = 1;
 
 
+
+    // variables pour vérifier si le joueur passe au prochin niveau
+    public static int nbTotalVaisseauxEnnemisDetruits = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
+        //intanciation du numéro de la manche en fonction du nombre d'ennemis par vague
+        if (genereEnnemis.nbEnnmisVaguesRef == 2)
+        {
+            numManche = 1;
+        }
+        if (genereEnnemis.nbEnnmisVaguesRef == 3)
+        {
+            numManche = 2;
+        }
+        if (genereEnnemis.nbEnnmisVaguesRef == 5)
+        {
+            numManche = 3;
+        }
+        if (genereEnnemis.nbEnnmisVaguesRef == 6)
+        {
+            numManche = 4;
+        }
+
+        //affichage de parcours
+        affNiveauManche.text = "manche : " + numManche + " / niveau : " + numNiveau;
+
+        //reset le temps actuiel à 0 et les différentes variables des points
+        tempsActuel = 0;
+        nbMeteoriteDetruites = 0;
+        nbVaisseauxDetruits = 0;
+        nbPoints = 0;
+
         // gestion des bouttons
         //menu.GetComponent<TextMeshProUGUI>().enabled = false;
         //recommencer.GetComponent<TextMeshProUGUI>().enabled = false;
         menu.enabled = false;
         recommencer.enabled = false;
-        //gameOver.enabled = false;
+        gameOver.enabled = false;
 
         //instanciation du timer
         tempsActuel = tempsDepart;
@@ -49,6 +83,15 @@ public class affichageEtScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* NIVEAU ET MANCHE */
+        //modifie si il y a un changement
+        if (numNiveauRef != numNiveau)
+        {
+            numNiveauRef = numNiveau;
+            affNiveauManche.text = "manche : " + numManche + " / niveau : " + numNiveau;
+        }
+      
+
         /* TEMPS */
 
         //enlève 1 seconde
@@ -59,7 +102,7 @@ public class affichageEtScore : MonoBehaviour
         }
 
         //vérifie si il arrive au bout du temps apparti
-        if (tempsActuel == 0 && messageFinDejaAff == false)
+        if (tempsActuel == 0)
         {
             //le message de fin sera afficher
             messageFinDejaAff = true;
@@ -68,6 +111,8 @@ public class affichageEtScore : MonoBehaviour
             dureePartie = (int)tempsDepart;
 
             //afiche le message de game over
+            gameOver.text = "game over";
+
             gameOver.enabled = true;
 
             //appel à la fonction qui affiche les informations de fin de jeu
@@ -93,6 +138,8 @@ public class affichageEtScore : MonoBehaviour
 
             affTempsRestant.text = "Temps restant: 0";
             //afiche le message de game over et le faire clignoter
+            gameOver.text = "game over";
+
             gameOver.enabled = true;
             gameOver.enabled = false;
             gameOver.enabled = true;
@@ -103,14 +150,78 @@ public class affichageEtScore : MonoBehaviour
             //appel à la fonction qui affiche les informations de fin de jeu
             Invoke("messageFin", 1f);
         }
+
+        /* RÉUSSITE DU JEU */ 
+
+        //vérifie si tout les ennemis ont été détruits
+        if((nbTotalVaisseauxEnnemisDetruits == (genereEnnemis.nbEnnmisVaguesRef * 6)) && messageFinDejaAff == false)
+        {
+
+            //le message de fin de réussite s'affiche pendant 1s
+            messageFinDejaAff=true;
+
+            //message
+            gameOver.text = "succes";
+            gameOver.enabled = true;
+
+            //appel à la fonction qui affiche les informations de fin de jeu
+            Invoke("messageReussite", 1f);
+        }
+
+    }
+
+    void messageReussite() /* méthode qui affiche le message de réussite */
+    {
+        // enlever le message et les informations affichées
+        gameOver.enabled = false;
+        affScore.enabled = false;
+        affTempsRestant.enabled = false;
+
+        //incrémentation du nombre d'obstacles et du numéro de niveau et de manche si le niveau 4 vient d'être complété
+        if (numNiveau == 1)
+        {
+            numNiveau++; /* incérmetation */
+            genereObstacles.nbObstaclesRef += 2; /* ajout de 2 obtacles */
+
+            //appel de la méthode qui charge le jeu
+            rechargerScene();
+        }
+        if (numNiveau == 2)
+        {
+            numNiveau++; /* incérmetation */
+            genereObstacles.nbObstaclesRef += 2; /* ajout de 2 obtacles */
+
+            //appel de la méthode qui charge le jeu
+            rechargerScene();
+
+        }
+        if (numNiveau == 3)
+        {
+            numNiveau++; /* incérmetation */
+            genereObstacles.nbObstaclesRef += 2; /* ajout de 2 obtacles */
+
+            //appel de la méthode qui charge le jeu
+            rechargerScene();
+
+        }
+        if (numNiveau == 4)
+        {
+            numNiveau = 1; /* incérmetation */
+            genereObstacles.nbObstaclesRef = 4; /* ajout de 2 obtacles */
+
+            //appel de la méthode qui charge le jeu
+            rechargerScene();
+
+        }
     }
 
     void messageFin() /* fonction qui affiche le message de fin de jeu */
     {
-        // enlever le message de gameOver et les inoformations affichées
+        // enlever le message de gameOver et les informations affichées
         gameOver.enabled = false;
         affScore.enabled = false;
         affTempsRestant.enabled = false;
+       
 
         //afficher les boutons 
         btnMenuText.text = "menu";
@@ -132,5 +243,18 @@ public class affichageEtScore : MonoBehaviour
     {
         //calcul
         nbPoints = 30 * nbVaisseauxDetruits + 10 * nbMeteoriteDetruites;
+    }
+
+    //méthode pour changer de scène
+    public void rechargerScene()
+    {
+        messageFinDejaAff = false;
+        joueurMort = false;
+        nbTotalVaisseauxEnnemisDetruits = 0;
+
+
+        //appel la scène désirée
+        SceneManager.LoadScene("scene_jeu");
+
     }
 }

@@ -53,7 +53,7 @@ public class deplaceMeteorites : MonoBehaviour
 
             affichageEtScore.nbMeteoriteDetruites++; //incérmentation du nombre de météorietes détruites
             affichageEtScore.joueurMort = true; /* le joueur est mort */
-
+    
         }
 
         if (other.gameObject.tag == "laser" /*|| other.gameObject.tag == "laserEnnemi"*/)

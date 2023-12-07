@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 291521744}
   - component: {fileID: 291521743}
   - component: {fileID: 291521742}
+  - component: {fileID: 291521745}
   m_Layer: 5
   m_Name: recommencer
   m_TagString: Untagged
@@ -320,7 +321,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.8867924, g: 0.12967247, b: 0.12967247, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -339,7 +340,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 291521743}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 291521745}
+        m_TargetAssemblyTypeName: btnRecommencer, Assembly-CSharp
+        m_MethodName: changerSceneEnCours
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &291521743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +391,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291521740}
   m_CullTransparentMesh: 1
+--- !u!114 &291521745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291521740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f6d9a6fe521414dab2eb6cd6234578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &315084055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 696757277704185435, guid: f79b164bdd6a7a641baf2948fb189870, type: 3}
@@ -602,7 +627,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4293049856
-  m_fontColor: {r: 0, g: 0.7448918, b: 0.8867924, a: 1}
+  m_fontColor: {r: 0.6580189, g: 0.8424194, b: 0.8773585, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -996,7 +1021,6 @@ MonoBehaviour:
   meteorite3: {fileID: 4850889063060024257, guid: f2d16586fb11b01428ff2bcd9f1c3f6b, type: 3}
   mine: {fileID: 6043829578011733187, guid: 3d6bb7ddb1a58864a8b234317eebb3e3, type: 3}
   tempsEntreVagues: 2
-  nbObstacles: 4
   tempsFinInstanciations: 8
   ensembleMines: []
 --- !u!114 &957942619
@@ -1012,11 +1036,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ennemi: {fileID: 4807810129009951586, guid: 01bb3a1e89f30e241bde23ba2bae51e5, type: 3}
-  nbEnnemisVague: 2
   tempsEntreVagues: 2
-  nbEnnemis: 0
-  maxPosY: 2.07
-  minPosY: -2.07
+  maxPosY: 2.2
+  minPosY: -2.2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1301,7 @@ GameObject:
   - component: {fileID: 1338254156}
   - component: {fileID: 1338254155}
   - component: {fileID: 1338254154}
+  - component: {fileID: 1338254157}
   m_Layer: 5
   m_Name: retourMenu
   m_TagString: Untagged
@@ -1349,7 +1372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1338254155}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1338254157}
+        m_TargetAssemblyTypeName: btnMenu, Assembly-CSharp
+        m_MethodName: changerScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1338254155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,6 +1423,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338254152}
   m_CullTransparentMesh: 1
+--- !u!114 &1338254157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338254152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41055f6b5ac4ea745bf81ff197fdec55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1455983045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,8 +1737,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 101, y: -21.1}
-  m_SizeDelta: {x: 200, y: 18.8}
+  m_AnchoredPosition: {x: 168.31744, y: -21.100006}
+  m_SizeDelta: {x: 334.6349, y: 18.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716164147
 MonoBehaviour:
@@ -2014,7 +2061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1998526142903693789, guid: f79b164bdd6a7a641baf2948fb189870, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.009
       objectReference: {fileID: 0}
     - target: {fileID: 1998526142903693789, guid: f79b164bdd6a7a641baf2948fb189870, type: 3}
       propertyPath: m_LocalPosition.z

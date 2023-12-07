@@ -11,7 +11,8 @@ public class genereObstacles : MonoBehaviour
     public GameObject meteorite3;
     public GameObject mine;
     public float tempsEntreVagues = 2f;
-    public float nbObstacles = 10;
+    private int nbObstacles = 4;
+    public static int nbObstaclesRef;
     public float tempsFinInstanciations = 8f;
 
 
@@ -22,6 +23,12 @@ public class genereObstacles : MonoBehaviour
 
     void Start()
     {
+        //si nb obstacles ref a été modifiée
+        if(nbObstaclesRef != 0)
+        {
+            nbObstacles = nbObstaclesRef;
+        }
+
         //appel des fonctions instanciant les obstacles
         InvokeRepeating("instancierMeteorite1", 0f, tempsEntreVagues);
         InvokeRepeating("instancierMeteorite2", 0f, tempsEntreVagues);
@@ -30,6 +37,16 @@ public class genereObstacles : MonoBehaviour
 
         //arrête tous les invokes apres le temps désigné
         //Invoke("stop", tempsFinInstanciations);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //modifie si il y a un changement
+        if (nbObstaclesRef != nbObstacles)
+        {
+            nbObstacles = nbObstaclesRef;
+        }
     }
 
     private void instancierMeteorite1()
