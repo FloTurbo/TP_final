@@ -65,6 +65,24 @@ public class genereObstacles : MonoBehaviour
 
      
         }
+
+        //si le nombre d'obstacle est de 6, alors en instncier deux de plus
+        if (nbObstacles == 6 || nbObstacles == 10)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                //random la coordonnée (x,y)
+                float x = UnityEngine.Random.Range(0f, 10f);
+                float y = UnityEngine.Random.Range(-3f, 3f);
+
+                //variable pour la position
+                Vector3 pos = new Vector3(x, y, 0f);
+
+                //instancier
+                meteoriteTempo = Instantiate(meteorite1, pos, Quaternion.identity);
+
+            }
+        }
     }
 
     private void instancierMeteorite2()

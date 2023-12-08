@@ -981,7 +981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957942617}
   - component: {fileID: 957942618}
-  - component: {fileID: 957942619}
+  - component: {fileID: 957942620}
   m_Layer: 0
   m_Name: obstacles
   m_TagString: Untagged
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   tempsEntreVagues: 2
   tempsFinInstanciations: 8
   ensembleMines: []
---- !u!114 &957942619
+--- !u!114 &957942620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 957942616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e905ae6281273144d9b38b35f4b411d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 562a5bae325f606408ec3196e457405e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ennemi: {fileID: 4807810129009951586, guid: 01bb3a1e89f30e241bde23ba2bae51e5, type: 3}

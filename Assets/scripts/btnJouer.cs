@@ -42,24 +42,25 @@ public class btnJouer : MonoBehaviour
         //récupérer la manche sélectionnée
         Button mancheVoulue = dernierBoutonSelectionne;
 
+        //définition du nombre d'ennemis en fonciton de la manche
         if (mancheVoulue.name == "manche1")
         {
-            genereEnnemis.nbEnnmisVaguesRef = 2;
+            generationEnnemis.nbEnnmisVaguesRef = 2;
         }
 
         if (mancheVoulue.name == "manche2")
         {
-            genereEnnemis.nbEnnmisVaguesRef = 3;
+            generationEnnemis.nbEnnmisVaguesRef = 3;
         }
 
         if (mancheVoulue.name == "manche3")
         {
-            genereEnnemis.nbEnnmisVaguesRef = 5;
+            generationEnnemis.nbEnnmisVaguesRef = 5;
         }
 
         if (mancheVoulue.name == "manche4")
         {
-            genereEnnemis.nbEnnmisVaguesRef = 6;
+            generationEnnemis.nbEnnmisVaguesRef = 6;
         }
 
         //appel à la fonction qui change les scènes
