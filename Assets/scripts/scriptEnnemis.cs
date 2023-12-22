@@ -18,7 +18,7 @@ public class deplaceEnnemis : MonoBehaviour
     public GameObject viseur2;
     public GameObject projectil;
     public float vitesseProjectil;
-    public float frequenceTir = 4f;
+    public float frequenceTir = 0.75f;
     private float frequenceActuelle;
     private bool peuTirer;
 

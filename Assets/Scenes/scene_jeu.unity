@@ -559,7 +559,6 @@ MonoBehaviour:
   btnMenuText: {fileID: 276219402}
   recommencer: {fileID: 291521742}
   menu: {fileID: 1338254154}
-  tempsDepart: 15
 --- !u!1 &648787691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,7 +2100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7813476348856866940, guid: f79b164bdd6a7a641baf2948fb189870, type: 3}
       propertyPath: minPosX
-      value: -4.5
+      value: -3.75
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8990322603972421862, guid: f79b164bdd6a7a641baf2948fb189870, type: 3}

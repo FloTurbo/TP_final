@@ -660,8 +660,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160, y: -96.619995}
-  m_SizeDelta: {x: 320, y: 189.22998}
+  m_AnchoredPosition: {x: 160, y: -105.436005}
+  m_SizeDelta: {x: 320, y: 206.862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611441658
 MonoBehaviour:
@@ -683,10 +683,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "le but du jeu est de survivre au passage des vaisseaux ennemis. Pour ce
-    faire, il faudra eviter leurs tirs, les m\xE9t\xE9orites et les mines pr\xE9sents
-    dans l'espaces. De plus, le but est d'obetnir le meilleur score, et ce en d\xE9truisant
-    le maximun de vaisseaux (30 points) et de m\xE9t\xE9orites (10 points)."
+  m_text: "le but du jeu est de survivre au passage des vaisseaux ennemis, ou jusqu'\xE0
+    la fin du temps apprti. Pour ce faire, il faudra \xE9viter leurs tirs, les m\xE9t\xE9orites
+    et les mines pr\xE9sents dans l'espaces. De plus, le but est d'obetnir le meilleur
+    score, et ce en d\xE9truisant le maximun de vaisseaux (30 points) et de m\xE9t\xE9orites
+    (10 points)."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -713,7 +714,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.2
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -749,7 +750,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -4.148651}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

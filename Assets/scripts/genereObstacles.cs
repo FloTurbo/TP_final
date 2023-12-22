@@ -35,8 +35,7 @@ public class genereObstacles : MonoBehaviour
         InvokeRepeating("instancierMeteorite3", 0f, tempsEntreVagues);
         InvokeRepeating("instancierMines", 0f, tempsEntreVagues);
 
-        //arrête tous les invokes apres le temps désigné
-        //Invoke("stop", tempsFinInstanciations);
+       
     }
 
     // Update is called once per frame
@@ -142,9 +141,5 @@ public class genereObstacles : MonoBehaviour
         }
     }
   
-    //private void stop()
-    //{
-    //    //met fin aux prossesues invoke
-    //    CancelInvoke();
-    //}
+   
 }

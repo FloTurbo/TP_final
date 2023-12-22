@@ -109,24 +109,6 @@ public class affichageEtScore : MonoBehaviour
             affTempsRestant.text = "Temps restant: " + tempsActuel.ToString("0"); /* affiche le nouveau temps */
         }
 
-        //vérifie si il arrive au bout du temps apparti
-        //if (tempsActuel == 0)
-        //{
-        //    //le message de fin sera afficher
-        //    messageFinDejaAff = true;
-
-        //    //instanciation de la durée de la partie
-        //    dureePartie = (int)tempsDepart;
-
-        //    //afiche le message de game over
-        //    gameOver.text = "game over";
-
-        //    gameOver.enabled = true;
-
-        //    //appel à la fonction qui affiche les informations de fin de jeu
-        //    Invoke("messageFin", 1f);
-        //}
-
         /* SCORE */
 
         calculerScore(); /* appel à la méthode qui calcul le score */
@@ -185,9 +167,9 @@ public class affichageEtScore : MonoBehaviour
         affScore.enabled = false;
         affTempsRestant.enabled = false;
 
-        Debug.Log("-----------------------");
-        Debug.Log("NIVEAU " + numNiveau);
-        Debug.Log("-----------------------");
+        //Debug.Log("-----------------------");
+        //Debug.Log("NIVEAU " + numNiveau);
+        //Debug.Log("-----------------------");
 
         //incrémentation du nombre d'obstacles et du numéro de niveau et de manche si le niveau 4 vient d'être complété
         if (numNiveau == 1)
@@ -215,9 +197,21 @@ public class affichageEtScore : MonoBehaviour
 
         }else if (numNiveau == 3)
         {
-            numNiveau++; /* incérmetation */
-            tempsDepart = 15f;
-            genereObstacles.nbObstaclesRef += 2; /* ajout de 2 obtacles */
+            //vérifier si il s'agit de l'avant dernière manche du jeu
+            if(numManche == 4)
+            {
+                numNiveau++;
+                tempsDepart = 20f;
+                genereObstacles.nbObstaclesRef += 10; /* ajout de 10 obtacles */
+            }
+            else
+            {
+
+                numNiveau++; /* incérmetation */
+                tempsDepart = 15f;
+                genereObstacles.nbObstaclesRef += 2; /* ajout de 2 obtacles */
+            }
+
 
             numNiveauRef = numNiveau;
             affNiveauManche.text = "manche : " + numManche + " / niveau : " + numNiveau;
@@ -264,9 +258,9 @@ public class affichageEtScore : MonoBehaviour
 
         }
 
-        Debug.Log("-----------------------");
-        Debug.Log("nb obstacles " + genereObstacles.nbObstaclesRef);
-        Debug.Log("-----------------------");
+        //Debug.Log("-----------------------");
+        //Debug.Log("nb obstacles " + genereObstacles.nbObstaclesRef);
+        //Debug.Log("-----------------------");
     }
 
     void messageFin() /* fonction qui affiche le message de fin de jeu */

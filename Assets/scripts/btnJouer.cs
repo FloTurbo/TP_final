@@ -86,14 +86,6 @@ public class btnJouer : MonoBehaviour
 
     }
 
-    /* scripte sélection de manche */
-
-    //manche 1
-    void MancheUne()
-    {
-
-    }
-
 }
 
 
